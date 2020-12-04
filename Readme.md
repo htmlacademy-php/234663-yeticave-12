@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Антон Кириллов](https://up.htmlacademy.ru/php/12/user/234663).
-* Наставник: `Неизвестно`.
+* Наставник:[Анна Смоленцева](https://htmlacademy.ru/profile/id1402027).
 
 ---
 
