@@ -36,6 +36,17 @@ $lots = [
     'url' => 'img/lot-6.jpg'
     ]
 ];
+function get_price ($price) {
+ $price = ceil($price);
+ if ($price >= 1000) {
+    $path1 = substr($price, -3);
+    $path2 = substr($price, 0, -3);
+    $price = $path2." ".$path1." "."&#8381";
+ }else {
+     $price = $price." "."&#8381";
+ }
+ return $price;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -112,7 +123,7 @@ $lots = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= $val['price']; ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= get_price($val['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
