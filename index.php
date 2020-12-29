@@ -39,9 +39,9 @@ $lots = [
 function get_price ($price) {
  $price = ceil($price);
  if ($price >= 1000) {
-    $path1 = substr($price, -3);
-    $path2 = substr($price, 0, -3);
-    $price = $path2." ".$path1." "."&#8381";
+    $part1 = substr($price, -3);
+    $part2 = substr($price, 0, -3);
+    $price = $part2." ".$part1." "."&#8381";
  }else {
      $price = $price." "."&#8381";
  }
