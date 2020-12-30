@@ -36,14 +36,15 @@ $lots = [
     'url' => 'img/lot-6.jpg'
     ]
 ];
+// Функция обработки цены.
 function get_price ($price) {
  $price = ceil($price);
  if ($price >= 1000) {
-    $part1 = substr($price, -3);
-    $part2 = substr($price, 0, -3);
-    $price = $part2." ".$part1." "."&#8381";
+    $part2 = substr($price, -3); // Последние три цифры (так мелочь)
+    $part1 = substr($price, 0, -3); // А это тысячи
+    $price = $part1." ".$part2." "."&#8381"; // Готовая цена если она больше 1000 рублей
  }else {
-     $price = $price." "."&#8381";
+     $price = $price." "."&#8381"; // Готовая цена если она меньше 1000 рублей
  }
  return $price;
 }
@@ -123,7 +124,7 @@ function get_price ($price) {
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= get_price($val['price']); ?></span>
+                            <span class="lot__cost"><?= get_price($val['price']); ?></span> <!-- Вызов функции обработки цены -->
                         </div>
                         <div class="lot__timer timer">
                             12:23
