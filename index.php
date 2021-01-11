@@ -1,5 +1,5 @@
 <?php
-require_once('helpers.php');
+require_once('settings.php');
 $is_auth = rand(0, 1);
 $user_name = 'Антон'; // укажите здесь ваше имя
 $categorys = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"]; // Массив категорий товара
@@ -35,18 +35,6 @@ $lots = [
     'price' => 5400,
     'url' => 'img/lot-6.jpg'
 ]];
-// Функция обработки цены.
-function get_price ($price) {
-    $price = ceil($price);
-    if ($price >= 1000) {
-       $part2 = substr($price, -3); // Последние три цифры (так мелочь)
-       $part1 = substr($price, 0, -3); // А это тысячи
-       $price = $part1." ".$part2." "."&#8381"; // Готовая цена если она больше 1000 рублей
-    }else {
-        $price = $price." "."&#8381"; // Готовая цена если она меньше 1000 рублей
-    }
-    return $price;
-   }
 // Подключение файла main.php с помощью функции. Передача данных в шаблон.
 $page_content = include_template('main.php', ['categorys' => $categorys, 'lots' => $lots]);
 // Подключение файла layout.php с помощью функции.
