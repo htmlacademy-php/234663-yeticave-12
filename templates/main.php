@@ -19,7 +19,7 @@
             <?php foreach ($lots as $key => $val): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?= $val['url']; ?>" width="350" height="260" alt="<?= strip_tags($val['title']); ?>"> <!-- Добавлена функция фильтрации спецсимволов, почему-то не работает -->
+                    <img src="<?= $val['url']; ?>" width="350" height="260" alt="<?= htmlspecialchars($val['title']); ?>"> <!-- Добавлена функция фильтрации спецсимволов, почему-то не работает -->
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?= $val['category']; ?></span>
