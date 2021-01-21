@@ -11,3 +11,15 @@ function get_price ($price) {
     }
     return $price;
    }
+   function get_lot_time ($date) {
+    $cur_date = strtotime("now"); // Получаем метку времени в формате Unixtime.
+    $lot_date = strtotime($date); // Создаём метку времени для даты окончания лота.
+    $lot_end_time = $lot_date - $cur_date; // Вычисляем разницу дат.
+    $hour_count = floor($lot_end_time/3600); // Вычисляем колличество оставшихся часов.
+    $min_count = floor(($lot_end_time - $hour_count*3600)/60); // Вычисляем колличество оставшихся минут
+    // Проверяме значение оставшихся часов и если оно меньше 10, добавляем ноль впереди.
+    if ($hour_count < 10){
+     $hour_count = str_pad($hour_count, 2, "0", STR_PAD_LEFT);
+    }
+    return [$hour_count, $min_count]; // Возвращаем массив.
+    };
