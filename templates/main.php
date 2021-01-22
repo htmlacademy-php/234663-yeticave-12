@@ -30,11 +30,11 @@
                             <span class="lot__cost"><?= get_price($val['price']); ?></span> <!-- Вызов функции обработки цены -->
                         </div>
                         <?php $time_lot = get_lot_time($val['end_time']); ?> <!-- Вызываем функцию времени существования лота -->
-                        <?php if ($time_lot[0] == 0): ?> <!-- Проверяем колличество оставшихся часов и если оно равно 0 добаляем класс -->
-                        <div class = "lot_time timer timer--finishing"> <!-- Добавляем класс новый класс-->
-                        <?php else : ?>
-                        <div class="lot__timer timer"> <!-- Без нового класса -->
+                        <?php $time_finishing = ""; ?>
+                        <?php if ($time_lot[0] < 1): ?> <!-- Проверяем колличество оставшихся часов и если оно меньше 1, добаляем класс -->
+                        <?= $time_finishing = "timer--finishing"; ?> <!-- Добавляем класс новый класс-->
                         <? endif; ?>
+                        <div class="lot__timer timer <?= $time_finishing; ?>">
                             <?= $time_lot[0]; ?> : <?= $time_lot[1]; ?> <!-- Выводим на экран колличество оставшихся часов и минут -->
                         </div>
                     </div>
