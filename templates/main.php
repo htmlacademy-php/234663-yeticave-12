@@ -29,8 +29,13 @@
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?= get_price($val['price']); ?></span> <!-- Вызов функции обработки цены -->
                         </div>
-                        <div class="lot__timer timer">
-                            12:23
+                        <?php $time_lot = get_lot_time($val['end_time']); ?> <!-- Вызываем функцию времени существования лота -->
+                        <?php $time_finishing = ""; ?>
+                        <?php if ($time_lot[0] < 1): ?> <!-- Проверяем колличество оставшихся часов и если оно меньше 1, добаляем класс -->
+                        <?= $time_finishing = "timer--finishing"; ?> <!-- Добавляем класс новый класс-->
+                        <? endif; ?>
+                        <div class="lot__timer timer <?= $time_finishing; ?>">
+                            <?= $time_lot[0]; ?> : <?= $time_lot[1]; ?> <!-- Выводим на экран колличество оставшихся часов и минут -->
                         </div>
                     </div>
                 </div>
