@@ -11,7 +11,7 @@ CREATE TABLE categories (
 
 CREATE TABLE lots (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    date_create DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    date_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     lot_name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     img TEXT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE lots (
 
 CREATE TABLE users (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   date_register TIMESTAMP NOT NULL,
+   date_register TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
    name VARCHAR(128) NOT NULL,
    email VARCHAR(255) NOT NULL UNIQUE,
    contacts TEXT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE users (
 
 CREATE TABLE bets (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    time_bet DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    time_bet TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     cost INT NOT NULL,
     userID INT NOT NULL,
     lotID INT NOT NULL
@@ -55,7 +55,7 @@ FOREIGN KEY (categoryID)
 REFERENCES categories(id);
 
 CREATE FULLTEXT INDEX lot_text on lots(description);
-CREATE INDEX lots_name on lots(name);
+CREATE UNIQUE INDEX lots_name on lots(lot_name);
 
 ALTER TABLE bets ADD
 FOREIGN KEY (userID)
